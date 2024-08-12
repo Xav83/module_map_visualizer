@@ -1,10 +1,10 @@
-from gh_cli_adapter import GhCliAdapter
-import graphviz
-
 import argparse
 import os
 import re
 import sys
+
+from gh_cli_adapter import GhCliAdapter
+import graphviz
 
 
 class Repository:
@@ -103,7 +103,9 @@ def main():
             )
 
         # Parse the file content to extract all submodules
-        with open(downloaded_gitmodules_location) as current_gitmodule:
+        with open(
+            downloaded_gitmodules_location, encoding="utf-8"
+        ) as current_gitmodule:
             matches = re.findall(r"url\s+=\s+.*", current_gitmodule.read())
             for match in matches:
                 url = match.split(" ")[-1]
