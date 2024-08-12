@@ -26,7 +26,9 @@ class GhCliAdapter:
         return rate_limit["resources"]["code_search"]["limit"]
 
     @staticmethod
-    def search_code(code_to_search, owner, repository=None, matching_filename=True, filename=None):
+    def search_code(
+        code_to_search, owner, repository=None, matching_filename=True, filename=None
+    ):
         if GhCliAdapter.get_remaining_code_search() <= 1:
             while (
                 GhCliAdapter.get_remaining_code_search()
@@ -121,5 +123,5 @@ class GhCliAdapter:
     # https://github.com/mislav/gh-cp
     @staticmethod
     def download_file(owner, repository, file, file_destination="."):
-        cmd =f"gh cp {owner}/{repository} {file} {file_destination}"
+        cmd = f"gh cp {owner}/{repository} {file} {file_destination}"
         subprocess.run(shlex.split(cmd), stdout=subprocess.DEVNULL, check=True)
