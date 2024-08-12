@@ -95,6 +95,12 @@ def main():
         "", args.owner, matching_filename=False, filename=".gitmodules"
     )
 
+    if len(matches) == 0:
+        print(
+            f"No repositories with submodule found for the organisation '{args.owner}'"
+        )
+        sys.exit(0)
+
     print("Collecting the data for the repositories:")
     for match in matches:
         if (
