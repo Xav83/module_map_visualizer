@@ -77,6 +77,14 @@ def main():
     parser.add_argument(
         "-o", "--owner", nargs="?", required=True, default=None, type=str
     )
+    parser.add_argument(
+        "-pr",
+        "--with-private-repository",
+        nargs="?",
+        required=False,
+        default=False,
+        type=bool,
+    )
     args = parser.parse_args()
 
     downloaded_gitmodules_location = "tmp/.gitmodules"
@@ -89,6 +97,11 @@ def main():
 
     print("Collecting the data for the repositories:")
     for match in matches:
+        if (
+            args.with_private_repository is False
+            and match["repository"]["isPrivate"] is True
+        ):
+            continue
         current_repository_with_owner = match["repository"]["nameWithOwner"]
         print(f"- {current_repository_with_owner}")
         # Get the content of the file .gitmodules for the repository "match['repository']['nameWithOwner']"
