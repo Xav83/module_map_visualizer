@@ -38,7 +38,7 @@ def extract_owner_from_submodule_url(url, owner_of_repo):
 
 
 def generate_graphical_representation_for_repositories_relationship(
-    owner, submodule_relationship
+    owner, submodule_relationship, output_folder
 ):
     print("Generating the Graphviz documents:")
     dot = graphviz.Digraph(comment=f"The {owner} Repo Relationships")
@@ -64,7 +64,7 @@ def generate_graphical_representation_for_repositories_relationship(
                 dot.edge(repo_name, submodule)
     dot = dot.unflatten(stagger=15)
     print("- Rendering....")
-    dot.render(view=True)
+    dot.render(view=True, filename=f"{output_folder}/{owner}")
 
 
 def main():
@@ -85,9 +85,17 @@ def main():
         default=False,
         type=bool,
     )
+    parser.add_argument(
+        "-out",
+        "--output-folder",
+        nargs="?",
+        required=False,
+        default="module_map_visualizer",
+        type=str,
+    )
     args = parser.parse_args()
 
-    downloaded_gitmodules_location = "tmp/.gitmodules"
+    downloaded_gitmodules_location = f"{args.output_folder}/.gitmodules"
     submodule_relationship = {}
     # list all submodules of an organization
     # gh search code \.git --owner args.owner --filename .gitmodules --json repository,textMatches
@@ -143,7 +151,7 @@ def main():
 
     # create a graph of relationship
     generate_graphical_representation_for_repositories_relationship(
-        args.owner, submodule_relationship
+        args.owner, submodule_relationship, args.output_folder
     )
 
 

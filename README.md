@@ -19,6 +19,9 @@ python scripts/repository_dependencies.py -o < name_of_your_github_organization 
 # Basic use case with private repositories
 python scripts/repository_dependencies.py -o < name_of_your_github_organization > --with-private-repository
 
+# Basic use case with a specified output folder
+python scripts/repository_dependencies.py -o < name_of_your_github_organization > --output-folder < path/to/folder >
+
 # Display the help
 python scripts/repository_dependencies.py --help
 ```
