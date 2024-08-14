@@ -41,7 +41,7 @@ def generate_graphical_representation_for_repositories_relationship(
     owner, submodule_relationship, output_folder
 ):
     print("Generating the Graphviz documents:")
-    dot = graphviz.Digraph(comment=f"The {owner} Repo Relationships")
+    dot = graphviz.Digraph(comment=f"The {owner} Repo Relationships", format="svg")
 
     with dot.subgraph() as top_repo:
         top_repo.attr(rank="same")
