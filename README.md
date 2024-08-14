@@ -1,4 +1,6 @@
-# Module Map visualizer
+# Module Map Visualizer
+
+This repository contains some python scripts which purpose is to generate a graphical representation of the relationships module-submodule existing between the repositories of a GitHub organization.
 
 ## Requirements
 
@@ -26,4 +28,4 @@ python scripts/repository_dependencies.py -o < name_of_your_github_organization 
 python scripts/repository_dependencies.py --help
 ```
 
-Be careful, the private repositories of the GitHUb organisation will be displayed in the graph generated, if you have the GitHub access to those repositories. Take that information into account if you plan on sharing the generated graphs 😉
+Be careful, the private repositories of the GitHub organization will be displayed in the graph generated, if you have the GitHub access to those repositories. Take that information into account if you plan on sharing the generated graphs 😉
