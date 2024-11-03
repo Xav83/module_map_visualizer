@@ -3,8 +3,8 @@ import os
 import re
 import sys
 
-from gh_cli_adapter import GhCliAdapter
 import graphviz
+from gh_cli_adapter import GhCliAdapter
 
 
 class Repository:
