@@ -7,6 +7,7 @@ This repository contains some python scripts which purpose is to generate a grap
 In order to be able to use this python script, you need to have the following elements installed:
 
 - [gh](https://cli.github.com/), GitHub command line interface
+  - with the copy file extension: `gh extension install mislav/gh-cp`
 
 You also need to install the python package detailed in the [requirements.txt](requirements.txt) file, for example, by running the following command:
 
